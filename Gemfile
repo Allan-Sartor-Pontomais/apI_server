@@ -4,10 +4,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.0.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.2", ">= 7.0.2.4"
+gem "rails", "~> 7.0.3"
 
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.1"
+gem "pg", "~> 1.3.5"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -17,6 +17,11 @@ gem 'rack-cors'
 
 # Pages Count
 gem "kaminari"
+
+# Letter_opener - Envio de emails
+
+# Devise Token Auth (Autenticação de usuários)
+gem 'devise'
 
 # Serializer API
 # gem 'fast_jsonapi'

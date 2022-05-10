@@ -1,19 +1,19 @@
 class Api::V1::CallsController < ApplicationController
   before_action :set_call, only: %i[ show update destroy ]
 
-  # GET /calls
+  # Listagem de chamados | GET /calls
   def index
     @calls = Call.all
 
-    render json: @calls
+    render json: { status: 'SUCCESS', message:'Chamados carregados', data: @calls}, status: 201
   end
 
-  # GET /calls/1
+  # Visualizar chamado | GET /calls/id
   def show
     render json: @call
   end
 
-  # POST /calls
+  # Criar novo chamado | POST /calls, { callObject }
   def create
     @call = Call.new(call_params)
 
@@ -24,7 +24,7 @@ class Api::V1::CallsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /calls/1
+  # Atualizar o chamado | PATCH/PUT /calls/id, { callObject }
   def update
     if @call.update(call_params)
       render json: @call
@@ -33,7 +33,7 @@ class Api::V1::CallsController < ApplicationController
     end
   end
 
-  # DELETE /calls/1
+  # Deletar chamado | DELETE  /calls/id
   def destroy
     @call.destroy
   end
@@ -44,7 +44,7 @@ class Api::V1::CallsController < ApplicationController
       @call = Call.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+    # Parametros aceitos nas requisições
     def call_params
       params.require(:call).permit(:priority_level, :anydesk_number, :description, :image_url, :call_status)
     end

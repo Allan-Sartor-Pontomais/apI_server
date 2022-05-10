@@ -13,9 +13,5 @@ Rails.application.routes.draw do
           constraints: ApiConstraints.new(version: 1, default: true) do
       resources :calls
     end
-    # scope module: :v2,
-    #       constraints: ApiConstraints.new(version: 2, default: false) do
-    #   resources :calls
-    # end
   end
 end
