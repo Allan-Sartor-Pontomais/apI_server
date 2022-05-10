@@ -1,12 +1,21 @@
-Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  root "calls#index"
+# VERSIONAMENTO DINAMICO DA API
+#   Para acessar a API será necessário colocar http://localhost:3001/api/calls,
+#   sem ter a necessidade de colocar a versão após a rota da API:
+#   Exemplo: /api/v1/calls
+#   Com o versionamento dinâmico:
+#   Exemplo: /api/calls
 
-  namespace :api do
-    namespace :v1 do
+require 'api_constraints'
+
+Rails.application.routes.draw do
+  namespace :api, defaults: { format: :json } do
+    scope module: :v1,
+          constraints: ApiConstraints.new(version: 1, default: true) do
       resources :calls
     end
+    # scope module: :v2,
+    #       constraints: ApiConstraints.new(version: 2, default: false) do
+    #   resources :calls
+    # end
   end
-
-  get '*path', to: 'pages#index', via: :all
 end
