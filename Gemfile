@@ -15,6 +15,12 @@ gem "puma", "~> 5.0"
 # Use API
 gem 'rack-cors'
 
+# Pages Count
+gem "kaminari"
+
+# Serializer API
+# gem 'fast_jsonapi'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
